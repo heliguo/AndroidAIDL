@@ -26,12 +26,12 @@ public class MessengerActivity extends AppCompatActivity {
 
     private static final String TAG = "MessengerActivity";
 
-    private Messenger mService;
+    private Messenger mService;//串行处理
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_text);
         Intent intent = new Intent(this, MessengerService.class);
         bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
 

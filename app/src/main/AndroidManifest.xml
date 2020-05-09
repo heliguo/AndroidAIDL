@@ -11,18 +11,24 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
 
-        </activity>
-        <activity android:name=".client.MessengerActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+        <activity android:name=".client.MessengerActivity">
+
+        </activity>
+        <activity android:name=".client.BookManagerActivity" />
 
         <service
             android:name=".service.MessengerService"
+            android:process=":remote" />
+        <service
+            android:name=".service.BookManagerService"
             android:process=":remote" />
 
     </application>
