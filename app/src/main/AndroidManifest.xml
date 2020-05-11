@@ -2,6 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.androidaidl">
 
+    <uses-permission
+        android:name="com.example.androidaidl.permission.ACCESS_BOOK_SERVICE"
+        android:protectionLevel="normal" />
+
+    <uses-permission android:name="com.example.androidaidl.PROVIDER"
+        android:protectionLevel="normal" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -23,6 +30,7 @@
 
         </activity>
         <activity android:name=".client.BookManagerActivity" />
+        <activity android:name=".contentprovider.ProviderActivity" />
 
         <service
             android:name=".service.MessengerService"
@@ -30,6 +38,12 @@
         <service
             android:name=".service.BookManagerService"
             android:process=":remote" />
+
+        <provider
+            android:name=".contentprovider.BookCProvider"
+            android:authorities="com.example.androidaidl.contentprovider"
+            android:permission="com.example.androidaidl.PROVIDER"
+            android:process=":provider" />
 
     </application>
 

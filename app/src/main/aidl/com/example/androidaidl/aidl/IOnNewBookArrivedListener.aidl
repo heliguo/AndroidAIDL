@@ -5,6 +5,6 @@ import com.example.androidaidl.aidl.Book;
 
 interface IOnNewBookArrivedListener {
 
-   void onNewBookArrived();
+   void onNewBookArrived(in Book book);
 
 }

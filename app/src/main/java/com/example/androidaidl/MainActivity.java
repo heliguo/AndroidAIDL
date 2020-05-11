@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.androidaidl.client.BookManagerActivity;
 import com.example.androidaidl.client.MessengerActivity;
+import com.example.androidaidl.contentprovider.ProviderActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,5 +25,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void startAIDL(View view) {
         startActivity(new Intent(this, BookManagerActivity.class));
+    }
+
+    public void startProvider(View view) {
+        startActivity(new Intent(this, ProviderActivity.class));
     }
 }
