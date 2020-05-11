@@ -24,4 +24,10 @@
         android:layout_height="wrap_content"
         android:text="contentprovider" />
 
+    <Button
+        android:onClick="useSocket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Socket" />
+
 </LinearLayout>

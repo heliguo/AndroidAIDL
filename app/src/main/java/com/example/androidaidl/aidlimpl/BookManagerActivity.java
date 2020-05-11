@@ -1,4 +1,4 @@
-package com.example.androidaidl.client;
+package com.example.androidaidl.aidlimpl;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -15,7 +15,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.androidaidl.R;
 import com.example.androidaidl.aidl.Book;
 import com.example.androidaidl.aidl.IBookManager;
-import com.example.androidaidl.service.BookManagerService;
 
 import java.util.List;
 

@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.androidaidl.R;
 import com.example.androidaidl.aidl.Book;
-import com.example.androidaidl.aidl.User;
 
 /**
  * author:lgh on 2020-05-11 10:19

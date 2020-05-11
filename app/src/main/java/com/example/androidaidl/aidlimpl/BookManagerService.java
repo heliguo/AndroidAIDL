@@ -1,4 +1,4 @@
-package com.example.androidaidl.service;
+package com.example.androidaidl.aidlimpl;
 
 import android.app.Service;
 import android.content.Intent;

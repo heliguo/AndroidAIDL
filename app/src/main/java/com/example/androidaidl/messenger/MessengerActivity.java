@@ -1,4 +1,4 @@
-package com.example.androidaidl.client;
+package com.example.androidaidl.messenger;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -17,7 +17,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.androidaidl.R;
-import com.example.androidaidl.service.MessengerService;
 
 /**
  * author:lgh on 2020-05-09 15:43

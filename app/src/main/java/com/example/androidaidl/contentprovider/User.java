@@ -1,4 +1,4 @@
-package com.example.androidaidl.aidl;
+package com.example.androidaidl.contentprovider;
 
 /**
  * author:lgh on 2020-05-11 13:25

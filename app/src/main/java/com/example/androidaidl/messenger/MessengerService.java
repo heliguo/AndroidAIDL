@@ -1,4 +1,4 @@
-package com.example.androidaidl.service;
+package com.example.androidaidl.messenger;
 
 import android.app.Service;
 import android.content.Intent;

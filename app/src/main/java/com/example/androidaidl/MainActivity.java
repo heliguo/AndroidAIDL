@@ -6,9 +6,10 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.androidaidl.client.BookManagerActivity;
-import com.example.androidaidl.client.MessengerActivity;
+import com.example.androidaidl.messenger.MessengerActivity;
+import com.example.androidaidl.aidlimpl.BookManagerActivity;
 import com.example.androidaidl.contentprovider.ProviderActivity;
+import com.example.androidaidl.socket.ClientSocketActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,5 +30,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void startProvider(View view) {
         startActivity(new Intent(this, ProviderActivity.class));
+    }
+
+    public void useSocket(View view) {
+        startActivity(new Intent(this, ClientSocketActivity.class));
     }
 }
