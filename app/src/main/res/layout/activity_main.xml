@@ -30,4 +30,10 @@
         android:layout_height="wrap_content"
         android:text="Socket" />
 
+    <Button
+        android:onClick="binderPool"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BinderPool" />
+
 </LinearLayout>

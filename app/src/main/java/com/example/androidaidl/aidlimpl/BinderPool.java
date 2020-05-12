@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.os.RemoteException;
+import android.util.Log;
 
 import com.example.androidaidl.IBinderPool;
 
@@ -51,6 +52,7 @@ public class BinderPool {
         mContext.bindService(service, mServiceConnection, Context.BIND_AUTO_CREATE);
         try {
             mConnectBinderPoolCountDownLatch.await();
+            Log.e(TAG, "connectBinderPoolService: " + Thread.currentThread().getName());
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -62,10 +64,12 @@ public class BinderPool {
         public void onServiceConnected(ComponentName name, IBinder service) {
             mBinderPool = IBinderPool.Stub.asInterface(service);
             try {
-                mBinderPool.asBinder().linkToDeath(mDeathRecipient,0);
+                mBinderPool.asBinder().linkToDeath(mDeathRecipient, 0);
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
+            mConnectBinderPoolCountDownLatch.countDown();
+            Log.e(TAG, "connectBinderPoolService: " + Thread.currentThread().getName());
         }
 
         @Override
@@ -77,7 +81,7 @@ public class BinderPool {
     private IBinder.DeathRecipient mDeathRecipient = new IBinder.DeathRecipient() {
         @Override
         public void binderDied() {
-            mBinderPool.asBinder().unlinkToDeath(mDeathRecipient,0);
+            mBinderPool.asBinder().unlinkToDeath(mDeathRecipient, 0);
             mBinderPool = null;
             connectBinderPoolService();
         }
@@ -107,9 +111,7 @@ public class BinderPool {
                 case BINDER_COMPUTE:
                     binder = new ComputeImpl();
                     break;
-
             }
-
             return binder;
         }
     }

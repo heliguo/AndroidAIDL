@@ -6,6 +6,7 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.os.Bundle;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -138,5 +139,25 @@ public class BookCProvider extends ContentProvider {
                 break;
         }
         return tableName;
+    }
+
+    /**
+     * 如果需要实现RPC（Remote Procedure call  远程程序调用：其他进程调用）
+     * @param method
+     * @param arg
+     * @param extras
+     * @return
+     */
+
+    @Nullable
+    @Override
+    public Bundle call(@NonNull String method, @Nullable String arg, @Nullable Bundle extras) {
+        return super.call(method, arg, extras);
+    }
+
+    @Nullable
+    @Override
+    public Bundle call(@NonNull String authority, @NonNull String method, @Nullable String arg, @Nullable Bundle extras) {
+        return super.call(authority, method, arg, extras);
     }
 }
