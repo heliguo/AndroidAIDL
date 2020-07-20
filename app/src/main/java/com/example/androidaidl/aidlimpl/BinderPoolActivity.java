@@ -1,5 +1,6 @@
 package com.example.androidaidl.aidlimpl;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
@@ -26,12 +27,10 @@ public class BinderPoolActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_text);
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Log.e(TAG, "run: " );
-                doWork();
-            }
+        getSystemService(Context.ACTIVITY_SERVICE)
+        new Thread(() -> {
+            Log.e(TAG, "run: " );
+            doWork();
         }).start();
     }
 

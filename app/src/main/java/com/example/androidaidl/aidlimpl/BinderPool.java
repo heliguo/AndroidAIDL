@@ -34,19 +34,16 @@ public class BinderPool {
     }
 
     public static BinderPool getInstance(Context context) {
-
         if (sInstance == null) {
             synchronized (BinderPool.class) {
                 sInstance = new BinderPool(context);
             }
         }
-
         return sInstance;
 
     }
 
     private synchronized void connectBinderPoolService() {
-
         mConnectBinderPoolCountDownLatch = new CountDownLatch(1);
         Intent service = new Intent(mContext, BinderPoolService.class);
         mContext.bindService(service, mServiceConnection, Context.BIND_AUTO_CREATE);
