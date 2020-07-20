@@ -5,11 +5,9 @@
     <uses-permission
         android:name="com.example.androidaidl.permission.ACCESS_BOOK_SERVICE"
         android:protectionLevel="normal" />
-
     <uses-permission
         android:name="com.example.androidaidl.PROVIDER"
         android:protectionLevel="normal" />
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -21,19 +19,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".service.ServiceActivity"/>
         <activity android:name=".MainActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-        <activity android:name=".messenger.MessengerActivity">
-
-        </activity>
+        <activity android:name=".messenger.MessengerActivity"/>
         <activity android:name=".aidlimpl.BookManagerActivity" />
         <activity android:name=".contentprovider.ProviderActivity" />
         <activity android:name=".socket.ClientSocketActivity" />
@@ -46,20 +41,19 @@
             android:name=".aidlimpl.BookManagerService"
             android:permission="com.example.androidaidl.permission.ACCESS_BOOK_SERVICE"
             android:process=":remote" />
-
         <service
             android:name=".socket.TCPServerService"
             android:process=":tcp" />
         <service
             android:name=".aidlimpl.BinderPoolService"
             android:process=":pool" />
+        <service android:name=".service.LocalService" />
 
         <provider
             android:name=".contentprovider.BookCProvider"
             android:authorities="com.example.androidaidl.contentprovider"
             android:permission="com.example.androidaidl.PROVIDER"
             android:process=":provider" />
-
     </application>
 
 </manifest>

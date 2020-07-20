@@ -27,13 +27,13 @@ public class MessengerService extends Service {
 
             if (msg.what == 0) {
                 Log.e(TAG, "handleMessage: " + msg.getData().getString("msg"));
-                Messenger replyTo = msg.replyTo;//获取客户端的Messenger
-                Message obtain = Message.obtain(null, 1);
+                Messenger messenger = msg.replyTo;//获取客户端的Messenger
+                Message message = Message.obtain(null, 1);
                 Bundle bundle = new Bundle();
                 bundle.putString("reply", "message is received");
-                obtain.setData(bundle);
+                message.setData(bundle);
                 try {
-                    replyTo.send(obtain);
+                    messenger.send(message);
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }

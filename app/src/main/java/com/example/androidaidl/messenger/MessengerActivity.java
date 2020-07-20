@@ -25,30 +25,27 @@ public class MessengerActivity extends AppCompatActivity {
 
     private static final String TAG = "MessengerActivity";
 
-    private Messenger mService;//串行处理
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_text);
         Intent intent = new Intent(this, MessengerService.class);
         bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
-
-
     }
 
     private ServiceConnection mConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             Log.e(TAG, "onServiceConnected: " + name.toString());
-            mService = new Messenger(service);
+            //串行处理
+            Messenger messenger = new Messenger(service);
             Message msg = Message.obtain(null, 0);
             Bundle bundle = new Bundle();
             bundle.putString("msg", "hello,this is client");
             msg.setData(bundle);
             msg.replyTo = mGetMessenger;
             try {
-                mService.send(msg);
+                messenger.send(msg);
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
@@ -60,7 +57,7 @@ public class MessengerActivity extends AppCompatActivity {
         }
     };
 
-    private static class ClicentHandler extends Handler {
+    private static class ClientHandler extends Handler {
         @Override
         public void handleMessage(@NonNull Message msg) {
             if (msg.what == 1) {
@@ -70,7 +67,7 @@ public class MessengerActivity extends AppCompatActivity {
         }
     }
 
-    private Messenger mGetMessenger = new Messenger(new ClicentHandler());
+    private Messenger mGetMessenger = new Messenger(new ClientHandler());
 
     @Override
     protected void onDestroy() {

@@ -10,6 +10,7 @@ import com.example.androidaidl.aidlimpl.BinderPoolActivity;
 import com.example.androidaidl.aidlimpl.BookManagerActivity;
 import com.example.androidaidl.contentprovider.ProviderActivity;
 import com.example.androidaidl.messenger.MessengerActivity;
+import com.example.androidaidl.service.ServiceActivity;
 import com.example.androidaidl.socket.ClientSocketActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -41,5 +42,9 @@ public class MainActivity extends AppCompatActivity {
 
         startActivity(new Intent(this, BinderPoolActivity.class));
 
+    }
+
+    public void binderLocalService(View view) {
+        startActivity(new Intent(this, ServiceActivity.class));
     }
 }
