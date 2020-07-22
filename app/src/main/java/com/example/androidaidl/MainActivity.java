@@ -6,6 +6,7 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.androidaidl.aidl.custombinder.client.ClientActivity;
 import com.example.androidaidl.aidlimpl.BinderPoolActivity;
 import com.example.androidaidl.aidlimpl.BookManagerActivity;
 import com.example.androidaidl.contentprovider.ProviderActivity;
@@ -46,5 +47,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void binderLocalService(View view) {
         startActivity(new Intent(this, ServiceActivity.class));
+    }
+
+    public void customBinder(View view) {
+        startActivity(new Intent(this, ClientActivity.class));
     }
 }

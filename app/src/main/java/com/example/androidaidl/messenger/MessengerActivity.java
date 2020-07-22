@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.Debug;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
@@ -29,6 +30,7 @@ public class MessengerActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_text);
+//        Debug.waitForDebugger();
         Intent intent = new Intent(this, MessengerService.class);
         bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
     }

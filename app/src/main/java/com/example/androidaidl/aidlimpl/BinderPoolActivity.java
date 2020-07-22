@@ -27,9 +27,9 @@ public class BinderPoolActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_text);
-        getSystemService(Context.ACTIVITY_SERVICE)
+        getSystemService(Context.ACTIVITY_SERVICE);
         new Thread(() -> {
-            Log.e(TAG, "run: " );
+            Log.e(TAG, "run: ");
             doWork();
         }).start();
     }
@@ -51,7 +51,7 @@ public class BinderPoolActivity extends AppCompatActivity {
         IBinder computeBinder = binderPool.queryBinder(BinderPool.BINDER_COMPUTE);
         mCompute = ComputeImpl.asInterface(computeBinder);
         try {
-            Log.e(TAG, "compute: 3+5=" +mCompute.add(3,5) );
+            Log.e(TAG, "compute: 3+5=" + mCompute.add(3, 5));
         } catch (RemoteException e) {
             e.printStackTrace();
         }

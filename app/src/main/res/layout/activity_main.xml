@@ -42,4 +42,10 @@
         android:layout_height="wrap_content"
         android:text="LocalService" />
 
+    <Button
+        android:onClick="customBinder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="自定义Binder" />
+
 </LinearLayout>

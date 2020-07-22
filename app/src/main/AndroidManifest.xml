@@ -33,6 +33,7 @@
         <activity android:name=".contentprovider.ProviderActivity" />
         <activity android:name=".socket.ClientSocketActivity" />
         <activity android:name=".aidlimpl.BinderPoolActivity" />
+        <activity android:name=".aidl.custombinder.client.ClientActivity" />
 
         <service
             android:name=".messenger.MessengerService"
