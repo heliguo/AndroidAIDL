@@ -17,6 +17,7 @@ public class ServiceActivity extends AppCompatActivity {
 
     ActivityServiceBinding mServiceBinding;
     private boolean bindService = false;
+    private Intent mIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,17 @@ public class ServiceActivity extends AppCompatActivity {
             }
             unbindService(mConnection);
             bindService = false;
+        });
+
+        mServiceBinding.startService.setOnClickListener(v -> {
+            mIntent = new Intent(this,LocalService.class);
+            mIntent.putExtra("key","12345");
+            startService(mIntent);
+
+        });
+
+        mServiceBinding.stopService.setOnClickListener(v -> {
+            stopService(mIntent);
         });
 
 

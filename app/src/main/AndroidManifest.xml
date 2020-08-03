@@ -10,6 +10,7 @@
         android:protectionLevel="normal" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:allowBackup="true"
@@ -48,7 +49,11 @@
         <service
             android:name=".aidlimpl.BinderPoolService"
             android:process=":pool" />
-        <service android:name=".service.LocalService" />
+        <service android:name=".service.LocalService"
+            android:exported="false">
+<!--            <intent-filter android:priority="10000"/>-->
+        </service>
+        <service android:name=".service.MyIntentService" />
 
         <provider
             android:name=".contentprovider.BookCProvider"
