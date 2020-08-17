@@ -11,9 +11,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.androidaidl.TestActivity;
 import com.example.androidaidl.databinding.ActivityServiceBinding;
 
 public class ServiceActivity extends AppCompatActivity {
+
+    private static final String TAG = "ServiceActivity";
 
     ActivityServiceBinding mServiceBinding;
     private boolean bindService = false;
@@ -24,6 +27,7 @@ public class ServiceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         mServiceBinding = ActivityServiceBinding.inflate(getLayoutInflater());
         setContentView(mServiceBinding.getRoot());
+        Log.e(TAG, "onCreate: ");
         mServiceBinding.bindService.setOnClickListener(v -> {
             Log.e("TAG", "onCreate: ");
             Intent intent = new Intent(this, LocalService.class);
@@ -40,14 +44,18 @@ public class ServiceActivity extends AppCompatActivity {
         });
 
         mServiceBinding.startService.setOnClickListener(v -> {
-            mIntent = new Intent(this,LocalService.class);
-            mIntent.putExtra("key","12345");
+            mIntent = new Intent(this, LocalService.class);
+            mIntent.putExtra("key", "12345");
             startService(mIntent);
 
         });
 
         mServiceBinding.stopService.setOnClickListener(v -> {
             stopService(mIntent);
+        });
+
+        mServiceBinding.button.setOnClickListener(v -> {
+            startActivity(new Intent(this, TestActivity.class));
         });
 
 
@@ -69,10 +77,42 @@ public class ServiceActivity extends AppCompatActivity {
     };
 
     @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.e(TAG, "onRestart: ");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.e(TAG, "onStart: ");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.e(TAG, "onResume: ");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.e(TAG, "onPause: ");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.e(TAG, "onStop: ");
+    }
+
+
+    @Override
     protected void onDestroy() {
         if (bindService) {
             unbindService(mConnection);
         }
         super.onDestroy();
+        Log.e(TAG, "onDestroy: ");
     }
 }

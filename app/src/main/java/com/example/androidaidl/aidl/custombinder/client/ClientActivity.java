@@ -26,6 +26,8 @@ import java.util.List;
  */
 public class ClientActivity extends AppCompatActivity {
 
+    private static final String TAG = "ClientActivity";
+
     private BookManager bookManager;
     private boolean isConnection = false;
 
@@ -34,6 +36,7 @@ public class ClientActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client);
 
+        Log.e(TAG, "onCreate: ");
         Button btn = findViewById(R.id.btn);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,6 +63,7 @@ public class ClientActivity extends AppCompatActivity {
             }
         });
     }
+
 
     private void attemptToBindService() {
 
@@ -95,6 +99,19 @@ public class ClientActivity extends AppCompatActivity {
         if (!isConnection) {
             attemptToBindService();
         }
+        Log.e(TAG, "onStart: ");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.e(TAG, "onResume: ");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.e(TAG, "onPause: ");
     }
 
     @Override
@@ -103,5 +120,12 @@ public class ClientActivity extends AppCompatActivity {
         if (isConnection) {
             unbindService(serviceConnection);
         }
+        Log.e(TAG, "onStop: ");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.e(TAG, "onDestroy: ");
     }
 }
